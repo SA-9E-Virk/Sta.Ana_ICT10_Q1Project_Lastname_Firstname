@@ -1,26 +1,24 @@
-from pyscript import document
-
+from pyscript import document, display
 def SKU_generator(e):
-    category = document.getElementById("category").value
-    product_name = document.getElementById("product_name").value
-    stock_qty = document.getElementById("quantity").value
+    document.getElementById('sku_output').innerHTML = ""
+
+    category = document.getElementById('category').value
+    product_name = document.getElementById('product_name').value
+    stock_qty = document.getElementById('quantity').value
 
     if product_name == "" or stock_qty == "":
-        document.getElementById("sku_output").innerHTML = """
-        <p class="text-danger text-center mb-0">
-            Please enter the watch model and stock quantity.
-        </p>
-        """
+        display(
+            "Please enter the watch model and stock quantity.",
+            target="sku_output"
+        )
         return
 
     sku = category[:3].upper() + "-" + product_name[:4].upper() + "-" + str(stock_qty)
 
-    document.getElementById("sku_output").innerHTML = f"""
-        <div class="result-box">
-            <p class="mb-1">Generated Watch SKU:</p>
-            <div class="sku-code">{sku}</div>
-        </div>
-    """
+    display(
+        f"SKU: {sku}",
+        target="sku_output"
+    )
 
 
 def create_order(e):
