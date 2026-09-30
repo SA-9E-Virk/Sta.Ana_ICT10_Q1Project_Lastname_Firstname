@@ -1,4 +1,6 @@
 from pyscript import document, display
+
+
 def SKU_generator(e):
     document.getElementById('sku_output').innerHTML = ""
 
